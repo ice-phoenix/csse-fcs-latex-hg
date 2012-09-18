@@ -5,7 +5,7 @@
 %% Modified by Marat Akhin, 2012
 %% 
 
-\ProvidesFile{kspt-master.rtx}
+\ProvidesFile{csse-master.rtx}
 
 \newcommand\master@the{\default@the}
 \master@the
