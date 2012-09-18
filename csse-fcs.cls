@@ -52,7 +52,7 @@
   \@mastertitletrue
 }
 \ifx\kspt@titlefile\@empty
-  \if@mastertitle \renewcommand*{\kspt@titlefile}{kspt-master.rtx} \fi
+  \if@mastertitle \renewcommand*{\kspt@titlefile}{csse-master.rtx} \fi
 \fi
 \AtEndOfClass{\input{\kspt@titlefile}}
 
