@@ -11,7 +11,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{kspt-fcs}[2012/09/18 CSSE FCS dissertation class]
+\ProvidesClass{csse-fcs}[2012/09/18 CSSE FCS dissertation class]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -21,8 +21,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \SetupKeyvalOptions{
-  family=kspt,
-  prefix=kspt@
+  family=csse,
+  prefix=csse@
 }
 \DeclareStringOption{titlefile}
 
@@ -51,10 +51,10 @@
 \DeclareOption{master}{
   \@mastertitletrue
 }
-\ifx\kspt@titlefile\@empty
-  \if@mastertitle \renewcommand*{\kspt@titlefile}{csse-master.rtx} \fi
+\ifx\csse@titlefile\@empty
+  \if@mastertitle \renewcommand*{\csse@titlefile}{csse-master.rtx} \fi
 \fi
-\AtEndOfClass{\input{\kspt@titlefile}}
+\AtEndOfClass{\input{\csse@titlefile}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
