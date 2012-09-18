@@ -45,9 +45,10 @@
 
 \thispagestyle{empty}
 \enlargethispage{2cm}
-\vspace*{-2cm}
 \begin{center}
 \instfont\@institution\par
+\instfont\@faculty\par
+\instfont\@department\par
 \end{center}
 
 \vskip\firstskip
