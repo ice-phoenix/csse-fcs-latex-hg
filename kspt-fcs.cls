@@ -13,13 +13,20 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{kspt-fcs}[2012/09/18 CSSE FCS dissertation class]
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \RequirePackage{kvoptions}
+\RequirePackage{geometry}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \SetupKeyvalOptions{
   family=kspt,
   prefix=kspt@
 }
 \DeclareStringOption{titlefile}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newif\if@afivepaper\@afivepapertrue
 \newif\if@afourpaper\@afourpaperfalse
@@ -35,8 +42,10 @@
   \PassOptionsToClass{a5paper,10pt}{disser}
 \fi
 \if@afourpaper
-  \PassOptionsToClass{a4paper14pt}{disser}
+  \PassOptionsToClass{a4paper,14pt}{disser}
 \fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newif\if@mastertitle\@mastertitletrue
 \DeclareOption{master}{
@@ -47,6 +56,8 @@
 \fi
 \AtEndOfClass{\input{\kspt@titlefile}}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \PassOptionsToClass{
   twoside,
   titlepage,
@@ -54,12 +65,18 @@
   onecolumn
 }{disser}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{disser}}
 
 \ProcessKeyvalOptions{kspt}
 \ProcessOptions\relax
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \LoadClass{disser}[2011/11/29]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \if@afivepaper
   \renewcommand\@approved{
@@ -70,6 +87,29 @@
       \>\makebox[1cm][r]{<<\hrulefill>>}
       \makebox[4cm][r]{\hrulefill\ \@date\,\yearname}
     \end{tabbing}
+  }
+  \geometry{
+    paper=a5paper,
+    nohead=true,
+    includefoot=true,
+    left=18mm,
+    right=18mm,
+    top=18mm,
+    bottom=18mm,
+    footskip=10mm
+  }
+\fi
+
+\if@afourpaper
+  \geometry{
+    paper=a4paper,
+    nohead=true,
+    includefoot=true,
+    left=25mm,
+    right=25mm,
+    top=25mm,
+    bottom=25mm,
+    footskip=15mm
   }
 \fi
 
