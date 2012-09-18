@@ -13,9 +13,16 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{kspt-fcs}[2012/09/18 CSSE FCS dissertation class]
 
+\RequirePackage{kvoptions}
+
+\SetupKeyvalOptions{
+  family=kspt,
+  prefix=kspt@
+}
+\DeclareStringOption{titlefile}
+
 \newif\if@afivepaper\@afivepapertrue
 \newif\if@afourpaper\@afourpaperfalse
-
 \DeclareOption{a5paper}{
   \@afivepapertrue
   \@afourpaperfalse
@@ -24,13 +31,21 @@
   \@afivepaperfalse
   \@afourpapertrue
 }
-
 \if@afivepaper
   \PassOptionsToClass{a5paper,10pt}{disser}
 \fi
 \if@afourpaper
   \PassOptionsToClass{a4paper14pt}{disser}
 \fi
+
+\newif\if@mastertitle\@mastertitletrue
+\DeclareOption{master}{
+  \@mastertitletrue
+}
+\ifx\kspt@titlefile\@empty
+  \if@mastertitle \renewcommand*{\kspt@titlefile}{kspt-master.rtx} \fi
+\fi
+\AtEndOfClass{\input{\kspt@titlefile}}
 
 \PassOptionsToClass{
   twoside,
@@ -40,6 +55,8 @@
 }{disser}
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{disser}}
+
+\ProcessKeyvalOptions{kspt}
 \ProcessOptions\relax
 
 \LoadClass{disser}[2011/11/29]
