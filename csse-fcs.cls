@@ -17,6 +17,7 @@
 
 \RequirePackage{kvoptions}
 \RequirePackage{geometry}
+\RequirePackage{nomencl}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -116,6 +117,26 @@
   \setlength{\fieldhshift}{8.5cm}
   \onehalfspacing
 \fi
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\blankpagecontent[1]{
+  \gdef\@blankpagecontent{#1}
+}
+\blankpagecontent{}
+\newcommand\makeblankpage{
+  \ifx\@blankpagecontent
+    \empty
+  \else
+    \begin{center}
+      \@blankpagecontent
+    \end{center}
+  \fi
+  \thispagestyle{empty}
+  \clearpage
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Default settings
 
