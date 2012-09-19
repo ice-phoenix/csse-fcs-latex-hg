@@ -102,6 +102,7 @@
   }
   \setlength{\fieldhshift}{5cm}
   \setlength{\parindent}{0.7cm}
+  \renewcommand{\nomlabelwidth}{2cm}
   \singlespacing
 \fi
 
@@ -117,6 +118,7 @@
     footskip=15mm
   }
   \setlength{\fieldhshift}{8.5cm}
+  \renewcommand{\nomlabelwidth}{3cm}
   \onehalfspacing
 \fi
 
@@ -304,9 +306,23 @@
 
 % Default settings
 
+\AtEndOfClass{
+\AtBeginDocument{
+
 \institution{{\cyr\CYRS\cyra\cyrn\cyrk\cyrt-\CYRP\cyre\cyrt\cyre\cyrr\cyrb\cyru\cyrr\cyrg\cyrs\cyrk\cyri\cyrishrt\ \cyrg\cyro\cyrs\cyru\cyrd\cyra\cyrr\cyrs\cyrt\cyrv\cyre\cyrn\cyrn\cyrery\cyrishrt\ \cyrp\cyro\cyrl\cyri\cyrt\cyre\cyrh\cyrn\cyri\cyrch\cyre\cyrs\cyrk\cyri\cyrishrt\ \cyru\cyrn\cyri\cyrv\cyre\cyrr\cyrs\cyri\cyrt\cyre\cyrt}}
 \faculty{{\cyr\CYRF\cyra\cyrk\cyru\cyrl\cyrsftsn\cyrt\cyre\cyrt\ \cyrt\cyre\cyrh\cyrn\cyri\cyrch\cyre\cyrs\cyrk\cyro\cyrishrt\ \cyrk\cyri\cyrb\cyre\cyrr\cyrn\cyre\cyrt\cyri\cyrk\cyri}}
 \department{{\cyr\CYRK\cyra\cyrf\cyre\cyrd\cyrr\cyra\ \cyrk\cyro\cyrm\cyrp\cyrsftsn\cyryu\cyrt\cyre\cyrr\cyrn\cyrery\cyrh\ \cyrs\cyri\cyrs\cyrt\cyre\cyrm\ \cyri\ \cyrp\cyrr\cyro\cyrg\cyrr\cyra\cyrm\cyrn\cyrery\cyrh\ \cyrt\cyre\cyrh\cyrn\cyro\cyrl\cyro\cyrg\cyri\cyrishrt}}
 
 \city{{\cyr\CYRS\cyra\cyrn\cyrk\cyrt-\CYRP\cyre\cyrt\cyre\cyrr\cyrb\cyru\cyrr\cyrg}}
 \date{\number\year}
+
+\renewcommand{\nomname}{\CYRS\CYRP\CYRI\CYRS\CYRO\CYRK\ \CYRO\CYRB\CYRO\CYRZ\CYRN\CYRA\CYRCH\CYRE\CYRN\CYRI\CYRISHRT\ \CYRI\ \CYRS\CYRO\CYRK\CYRR\CYRA\CYRSHCH\CYRE\CYRN\CYRI\CYRISHRT}
+
+\renewcommand{\introname}{\CYRV\CYRV\CYRE\CYRD\CYRE\CYRN\CYRI\CYRE}
+\renewcommand{\conclusionname}{\CYRZ\CYRA\CYRK\CYRL\CYRYU\CYRCH\CYRE\CYRN\CYRI\CYRE}
+
+\setcounter{tocdepth}{2}
+\renewcommand{\tocsection}{\chapter*{\MakeUppercase{\contentsname}}}
+
+}
+}
