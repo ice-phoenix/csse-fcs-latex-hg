@@ -328,5 +328,23 @@
 \setcounter{tocdepth}{2}
 \renewcommand{\tocsection}{\chapter*{\MakeUppercase{\contentsname}}}
 
+\renewcommand{\chaptername}{}
+\renewcommand{\tocprethechapter}{}
+\renewcommand{\tocpostthechapter}{~}
+\renewcommand{\prethechapter}{}
+\renewcommand{\postthechapter}{~}
+\renewcommand{\tocprethesection}{}
+\renewcommand{\tocpostthesection}{~}
+\renewcommand{\prethesection}{}
+\renewcommand{\postthesection}{~}
+\renewcommand{\tocprethesubsection}{}
+\renewcommand{\tocpostthesubsection}{~}
+\renewcommand{\prethesubsection}{}
+\renewcommand{\postthesubsection}{~}
+\renewcommand{\tocprethesubsubsection}{}
+\renewcommand{\tocpostthesubsubsection}{~}
+\renewcommand{\prethesubsubsection}{}
+\renewcommand{\postthesubsubsection}{~}
+
 }
 }
