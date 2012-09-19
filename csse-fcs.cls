@@ -328,6 +328,8 @@
   \renewcommand{\conclusionname}{\CYRZ\CYRA\CYRK\CYRL\CYRYU\CYRCH\CYRE\CYRN\CYRI\CYRE}
   \renewcommand{\bibname}{\CYRS\CYRP\CYRI\CYRS\CYRO\CYRK\ \CYRI\CYRS\CYRP\CYRO\CYRL\CYRSFTSN\CYRZ\CYRO\CYRV\CYRA\CYRN\CYRN\CYRERY\CYRH\ \CYRI\CYRS\CYRT\CYRO\CYRCH\CYRN\CYRI\CYRK\CYRO\CYRV}
   \renewcommand{\appendixname}{\CYRP\CYRR\CYRI\CYRL\CYRO\CYRZH\CYRE\CYRN\CYRI\CYRE}
+  \renewcommand{\figurename}{\CYRR\cyri\cyrs\cyru\cyrn\cyro\cyrk}
+  \renewcommand{\tablename}{\CYRT\cyra\cyrb\cyrl\cyri\cyrc\cyra}
 }
 
 \setcounter{tocdepth}{2}
@@ -353,6 +355,24 @@
 \renewcommand{\tocposttheappendix}{.~}
 \renewcommand{\pretheappendix}{\appendixname~}
 \renewcommand{\posttheappendix}{\\}
+
+\renewcommand\floatpagefraction{0.9}
+\renewcommand\topfraction{0.9}
+\renewcommand\bottomfraction{0.9}
+\renewcommand\textfraction{0.1}
+\setcounter{totalnumber}{64}
+\setcounter{topnumber}{64}
+\setcounter{bottomnumber}{64}
+
+\captionsetup{singlelinecheck=false}
+\captionsetup[figure]{%
+  labelsep=period,
+  justification=centering}
+\captionsetup[table]{%
+  labelsep=period,
+  justification=raggedleft}
+\floatname{figure}{\CYRR\cyri\cyrs\cyru\cyrn\cyro\cyrk}
+\floatname{table}{\CYRT\cyra\cyrb\cyrl\cyri\cyrc\cyra}
 
 }
 }
