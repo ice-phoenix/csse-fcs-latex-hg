@@ -316,8 +316,12 @@
 \city{{\cyr\CYRS\cyra\cyrn\cyrk\cyrt-\CYRP\cyre\cyrt\cyre\cyrr\cyrb\cyru\cyrr\cyrg}}
 \date{\number\year}
 
+\renewcommand{\courselabel}{}
+\renewcommand{\masterproglabel}{}
+
 \renewcommand{\nomname}{\CYRS\CYRP\CYRI\CYRS\CYRO\CYRK\ \CYRO\CYRB\CYRO\CYRZ\CYRN\CYRA\CYRCH\CYRE\CYRN\CYRI\CYRISHRT\ \CYRI\ \CYRS\CYRO\CYRK\CYRR\CYRA\CYRSHCH\CYRE\CYRN\CYRI\CYRISHRT}
 
+\setcounter{secnumdepth}{2}
 \renewcommand{\introname}{\CYRV\CYRV\CYRE\CYRD\CYRE\CYRN\CYRI\CYRE}
 \renewcommand{\conclusionname}{\CYRZ\CYRA\CYRK\CYRL\CYRYU\CYRCH\CYRE\CYRN\CYRI\CYRE}
 
