@@ -327,6 +327,7 @@
   \renewcommand{\introname}{\CYRV\CYRV\CYRE\CYRD\CYRE\CYRN\CYRI\CYRE}
   \renewcommand{\conclusionname}{\CYRZ\CYRA\CYRK\CYRL\CYRYU\CYRCH\CYRE\CYRN\CYRI\CYRE}
   \renewcommand{\bibname}{\CYRS\CYRP\CYRI\CYRS\CYRO\CYRK\ \CYRI\CYRS\CYRP\CYRO\CYRL\CYRSFTSN\CYRZ\CYRO\CYRV\CYRA\CYRN\CYRN\CYRERY\CYRH\ \CYRI\CYRS\CYRT\CYRO\CYRCH\CYRN\CYRI\CYRK\CYRO\CYRV}
+  \renewcommand{\appendixname}{\CYRP\CYRR\CYRI\CYRL\CYRO\CYRZH\CYRE\CYRN\CYRI\CYRE}
 }
 
 \setcounter{tocdepth}{2}
@@ -348,6 +349,10 @@
 \renewcommand{\tocpostthesubsubsection}{~}
 \renewcommand{\prethesubsubsection}{}
 \renewcommand{\postthesubsubsection}{~}
+\renewcommand{\tocpretheappendix}{\appendixname~}
+\renewcommand{\tocposttheappendix}{.~}
+\renewcommand{\pretheappendix}{\appendixname~}
+\renewcommand{\posttheappendix}{\\}
 
 }
 }
