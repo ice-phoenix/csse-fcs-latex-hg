@@ -100,6 +100,7 @@
     footskip=10mm
   }
   \setlength{\fieldhshift}{5cm}
+  \setlength{\parindent}{0.7cm}
   \singlespacing
 \fi
 
@@ -138,7 +139,89 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newcommand\csseabstractname{%
+  \CYRR\CYRE\CYRF\CYRE\CYRR\CYRA\CYRT
+}
+\newcommand\stats@report{%
+  \CYRO\cyrt\cyrch\cyre\cyrt%
+}
+\newcommand\stats@page{%
+  \cyrs\cyrt\cyrr.%
+}
+\newcommand\stats@fig{%
+  \cyrr\cyri\cyrs.%
+}
+\newcommand\stats@table{%
+  \cyrt\cyra\cyrb\cyrl.%
+}
+\newcommand\stats@cite{%
+  \cyri\cyrs\cyrt.%
+}
+\newcommand\stats@appendix{%
+  \cyrp\cyrr\cyri\cyrl.%
+}
+\newcommand\stats[5]{%
+  \stats@report%
+  \ifx&#1&\empty%
+  \else{, #1~\stats@page}%
+  \fi%
+  \ifx&#2&\empty%
+  \else{, #2~\stats@fig}%
+  \fi%
+  \ifx&#3&\empty%
+  \else{, #3~\stats@table}%
+  \fi%
+  \ifx&#4&\empty%
+  \else{, #4~\stats@cite}%
+  \fi%
+  \ifx&#5&\empty%
+  \else{, #5~\stats@appendix}%
+  \fi%
+}
 
+\newcommand\pagecount[1]{%
+  \gdef\@pagecount{#1}
+}\pagecount{}
+\newcommand\figcount[1]{%
+  \gdef\@figcount{#1}
+}\figcount{}
+\newcommand\tablecount[1]{%
+  \gdef\@tablecount{#1}
+}\tablecount{}
+\newcommand\citecount[1]{%
+  \gdef\@citecount{#1}
+}\citecount{}
+\newcommand\appendixcount[1]{%
+  \gdef\@appendixcount{#1}
+}\appendixcount{}
+
+\newcommand\abstractcontent[1]{%
+  \gdef\@abstractcontent{#1}
+}\abstractcontent{}
+
+\newcommand\makeabstract{%
+  \clearpage
+  \thispagestyle{empty}%
+  %
+  \@makeschapterhead{\csseabstractname}%
+  \@afterheading%
+  %
+  \begin{center}
+  \stats{%
+    \@pagecount}{%
+    \@figcount}{%
+    \@tablecount}{%
+    \@citecount}{%
+    \@appendixcount%
+  }
+  \end{center}
+  %
+  \begin{center}
+    \MakeUppercase{\@keywords}
+  \end{center}
+  %
+  \@abstractcontent
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
