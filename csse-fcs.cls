@@ -98,6 +98,8 @@
     bottom=18mm,
     footskip=10mm
   }
+  \setlength{\fieldhshift}{5cm}
+  \singlespacing
 \fi
 
 \if@afourpaper
@@ -111,6 +113,8 @@
     bottom=25mm,
     footskip=15mm
   }
+  \setlength{\fieldhshift}{8.5cm}
+  \onehalfspacing
 \fi
 
 % Default settings

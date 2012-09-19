@@ -35,9 +35,7 @@
 \ifundeflength\thirdskip{2ex}
 \ifundeflength\fourthskip{0ex}
 \ifundeflength\fifthskip{16ex}
-\ifundeflength\sixthskip{2ex}
-
-\setlength\fieldhshift{8.5cm}
+\ifundeflength\sixthskip{1ex}
 
 \def\titlefont{\Large\bfseries}
 \def\topiclabelfont{\large}
@@ -62,8 +60,10 @@
 \end{center}
 \vskip\fourthskip
 %
-\courselabel\ \@coursenum\ --\ \@course\\%
-\masterproglabel\ \@masterprognum\ --\ \@masterprog%
+\begin{center}
+  \courselabel\ \@coursenum\ --\ \@course\\%
+  \masterproglabel\ \@masterprognum\ --\ \@masterprog%
+\end{center}
 %
 \vskip\fifthskip
 \begin{tabbing}
