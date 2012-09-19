@@ -18,6 +18,7 @@
 \RequirePackage{kvoptions}
 \RequirePackage{geometry}
 \RequirePackage{nomencl}
+\RequirePackage{indentfirst}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -220,7 +221,7 @@
     \MakeUppercase{\@keywords}
   \end{center}
   %
-  \@abstractcontent
+  {\@abstractcontent}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
