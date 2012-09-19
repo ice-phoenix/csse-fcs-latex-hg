@@ -143,25 +143,46 @@
 \newcommand\csseabstractname{%
   \CYRR\CYRE\CYRF\CYRE\CYRR\CYRA\CYRT
 }
+\newcommand\csseabstractnameen{%
+  ABSTRACT%
+}
 \newcommand\stats@report{%
   \CYRO\cyrt\cyrch\cyre\cyrt%
+}
+\newcommand\stats@report@en{%
+  Report%
 }
 \newcommand\stats@page{%
   \cyrs\cyrt\cyrr.%
 }
+\newcommand\stats@page@en{%
+  pages%
+}
 \newcommand\stats@fig{%
   \cyrr\cyri\cyrs.%
+}
+\newcommand\stats@fig@en{%
+  figures%
 }
 \newcommand\stats@table{%
   \cyrt\cyra\cyrb\cyrl.%
 }
+\newcommand\stats@table@en{%
+  tables%
+}
 \newcommand\stats@cite{%
   \cyri\cyrs\cyrt.%
+}
+\newcommand\stats@cite@en{%
+  references%
 }
 \newcommand\stats@appendix{%
   \cyrp\cyrr\cyri\cyrl.%
 }
-\newcommand\stats[5]{%
+\newcommand\stats@appendix@en{%
+  appendicies%
+}
+\newcommand\@stats[5]{%
   \stats@report%
   \ifx&#1&\empty%
   \else{, #1~\stats@page}%
@@ -177,6 +198,24 @@
   \fi%
   \ifx&#5&\empty%
   \else{, #5~\stats@appendix}%
+  \fi%
+}
+\newcommand\@stats@en[5]{%
+  \stats@report@en%
+  \ifx&#1&\empty%
+  \else{, #1~\stats@page@en}%
+  \fi%
+  \ifx&#2&\empty%
+  \else{, #2~\stats@fig@en}%
+  \fi%
+  \ifx&#3&\empty%
+  \else{, #3~\stats@table@en}%
+  \fi%
+  \ifx&#4&\empty%
+  \else{, #4~\stats@cite@en}%
+  \fi%
+  \ifx&#5&\empty%
+  \else{, #5~\stats@appendix@en}%
   \fi%
 }
 
@@ -199,29 +238,66 @@
 \newcommand\abstractcontent[1]{%
   \gdef\@abstractcontent{#1}
 }\abstractcontent{}
+\newcommand\abstractcontenten[1]{%
+  \gdef\@abstractcontent@en{#1}
+}\abstractcontenten{}
 
-\newcommand\makeabstract{%
-  \clearpage
+\newcommand\keywordsen[1]{%
+  \gdef\@keywords@en{#1}
+}\keywordsen{}
+
+\newcommand\@makeabstract[4]{%
+  \clearpage%
   \thispagestyle{empty}%
   %
-  \@makeschapterhead{\csseabstractname}%
+  \@makeschapterhead{#1}%
   \@afterheading%
   %
-  \begin{center}
-  \stats{%
-    \@pagecount}{%
-    \@figcount}{%
-    \@tablecount}{%
-    \@citecount}{%
-    \@appendixcount%
+  \begin{center}%
+  #2%
+  \end{center}%
+  %
+  \begin{center}%
+    \MakeUppercase{#3}%
+  \end{center}
+  %
+  {%
+    \hskip\parindent%
+    #4%
   }
-  \end{center}
-  %
-  \begin{center}
-    \MakeUppercase{\@keywords}
-  \end{center}
-  %
-  {\@abstractcontent}
+}
+
+\newcommand\makeabstractru{%
+  \@makeabstract{%
+    \csseabstractname}{%
+    \@stats{%
+      \@pagecount}{%
+      \@figcount}{%
+      \@tablecount}{%
+      \@citecount}{%
+      \@appendixcount%
+    }}{%
+    \@keywords}{%
+    \@abstractcontent%
+  }
+}
+\newcommand\makeabstracten{%
+  \@makeabstract{%
+    \csseabstractnameen}{%
+    \@stats@en{%
+      \@pagecount}{%
+      \@figcount}{%
+      \@tablecount}{%
+      \@citecount}{%
+      \@appendixcount%
+    }}{%
+    \@keywords@en}{%
+    \@abstractcontent@en%
+  }
+}
+\newcommand\makeabstract{%
+  \makeabstractru%
+  \makeabstracten%
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
