@@ -19,6 +19,7 @@
 \RequirePackage{geometry}
 \RequirePackage{nomencl}
 \RequirePackage{indentfirst}
+\RequirePackage{totcount}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -300,6 +301,54 @@
 \newcommand\makeabstract{%
   \makeabstractru%
   \makeabstracten%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\regtotcounter{page}
+\regtotcounter{chapter}
+
+\newcounter{total@figure}
+\newcounter{total@table}
+\newcounter{total@cite}
+
+\gdef\total@figure{0}
+\gdef\total@table{0}
+\gdef\total@cite{0}
+
+\AtEndOfClass{
+\AtBeginDocument{
+  \pagecount{\total{page}}
+  \figcount{\total@figure}
+  \tablecount{\total@table}
+  \citecount{\total@cite}
+  \appendixcount{\total{chapter}}
+}
+}
+
+\AtEndDocument{
+  \addtocounter{total@figure}{\value{figure}}
+  \addtocounter{total@table}{\value{table}}
+  \immediate\write\@mainaux{
+    \string\gdef\string\total@figure{\number\value{total@figure}}
+    \string\gdef\string\total@table{\number\value{total@table}}
+    \string\gdef\string\total@cite{\number\value{total@cite}}
+  }
+}
+
+\def\oldchapter{}
+\let\oldchapter=\chapter
+\def\chapter{%
+  \addtocounter{total@figure}{\value{figure}}%
+  \addtocounter{total@table}{\value{table}}%
+  \oldchapter%
+}
+
+\def\oldbibcite{}
+\let\oldbibcite=\bibcite
+\def\bibcite{%
+  \stepcounter{total@cite}%
+  \oldbibcite%
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
