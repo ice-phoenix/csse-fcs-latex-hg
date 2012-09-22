@@ -19,7 +19,7 @@
 \RequirePackage{geometry}
 \RequirePackage{nomencl}
 \RequirePackage{indentfirst}
-\RequirePackage{totcount}
+\RequirePackage{xstring}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -78,6 +78,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \LoadClass{disser}[2011/11/29]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -187,56 +189,56 @@
 }
 \newcommand\@stats[5]{%
   \stats@report%
-  \ifx&#1&\empty%
-  \else{, #1~\stats@page}%
-  \fi%
-  \ifx&#2&\empty%
-  \else{, #2~\stats@fig}%
-  \fi%
-  \ifx&#3&\empty%
-  \else{, #3~\stats@table}%
-  \fi%
-  \ifx&#4&\empty%
-  \else{, #4~\stats@cite}%
-  \fi%
-  \ifx&#5&\empty%
-  \else{, #5~\stats@appendix}%
-  \fi%
+  \IfEq{#1}{0}{}{%
+  , #1~\stats@page%
+  }%
+  \IfEq{#2}{0}{}{%
+  , #2~\stats@fig%
+  }%
+  \IfEq{#3}{0}{}{%
+  , #3~\stats@table%
+  }%
+  \IfEq{#4}{0}{}{%
+  , #4~\stats@cite%
+  }%
+  \IfEq{#5}{0}{}{%
+  , #5~\stats@appendix%
+  }%
 }
 \newcommand\@stats@en[5]{%
   \stats@report@en%
-  \ifx&#1&\empty%
-  \else{, #1~\stats@page@en}%
-  \fi%
-  \ifx&#2&\empty%
-  \else{, #2~\stats@fig@en}%
-  \fi%
-  \ifx&#3&\empty%
-  \else{, #3~\stats@table@en}%
-  \fi%
-  \ifx&#4&\empty%
-  \else{, #4~\stats@cite@en}%
-  \fi%
-  \ifx&#5&\empty%
-  \else{, #5~\stats@appendix@en}%
-  \fi%
+  \IfEq{#1}{0}{}{%
+  , #1~\stats@page@en%
+  }%
+  \IfEq{#2}{0}{}{%
+  , #2~\stats@fig@en%
+  }%
+  \IfEq{#3}{0}{}{%
+  , #3~\stats@table@en%
+  }%
+  \IfEq{#4}{0}{}{%
+  , #4~\stats@cite@en%
+  }%
+  \IfEq{#5}{0}{}{%
+  , #5~\stats@appendix@en%
+  }%
 }
 
 \newcommand\pagecount[1]{%
-  \gdef\@pagecount{#1}
-}\pagecount{}
+  \xdef\@pagecount{#1}
+}\pagecount{0}
 \newcommand\figcount[1]{%
-  \gdef\@figcount{#1}
-}\figcount{}
+  \xdef\@figcount{#1}
+}\figcount{0}
 \newcommand\tablecount[1]{%
-  \gdef\@tablecount{#1}
-}\tablecount{}
+  \xdef\@tablecount{#1}
+}\tablecount{0}
 \newcommand\citecount[1]{%
-  \gdef\@citecount{#1}
-}\citecount{}
+  \xdef\@citecount{#1}
+}\citecount{0}
 \newcommand\appendixcount[1]{%
-  \gdef\@appendixcount{#1}
-}\appendixcount{}
+  \xdef\@appendixcount{#1}
+}\appendixcount{0}
 
 \newcommand\abstractcontent[1]{%
   \gdef\@abstractcontent{#1}
@@ -305,34 +307,42 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\regtotcounter{page}
-\regtotcounter{chapter}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newcounter{total@page}
 \newcounter{total@figure}
 \newcounter{total@table}
 \newcounter{total@cite}
+\newcounter{total@appendix}
 
+\gdef\total@page{0}
 \gdef\total@figure{0}
 \gdef\total@table{0}
 \gdef\total@cite{0}
+\gdef\total@appendix{0}
 
 \AtEndOfClass{
 \AtBeginDocument{
-  \pagecount{\total{page}}
+  \pagecount{\total@page}
   \figcount{\total@figure}
   \tablecount{\total@table}
   \citecount{\total@cite}
-  \appendixcount{\total{chapter}}
+  \appendixcount{\total@appendix}
 }
 }
 
 \AtEndDocument{
+  \setcounter{total@page}{\value{page}}
+  %
   \addtocounter{total@figure}{\value{figure}}
   \addtocounter{total@table}{\value{table}}
+  %
   \immediate\write\@mainaux{
+    \string\gdef\string\total@page{\number\value{total@page}}
     \string\gdef\string\total@figure{\number\value{total@figure}}
     \string\gdef\string\total@table{\number\value{total@table}}
     \string\gdef\string\total@cite{\number\value{total@cite}}
+    \string\gdef\string\total@appendix{\number\value{total@appendix}}
   }
 }
 
@@ -341,6 +351,7 @@
 \def\chapter{%
   \addtocounter{total@figure}{\value{figure}}%
   \addtocounter{total@table}{\value{table}}%
+  \stepcounter{total@appendix}%
   \oldchapter%
 }
 
@@ -349,6 +360,20 @@
 \def\bibcite{%
   \stepcounter{total@cite}%
   \oldbibcite%
+}
+
+\def\oldappendix{}
+\let\oldappendix=\appendix
+\def\appendix{%
+  \setcounter{total@appendix}{0}%
+  \oldappendix%
+}
+
+\def\oldnoappendix{}
+\let\oldnoappendix=\noappendix
+\def\noappendix{%
+  \setcounter{total@appendix}{0}%
+  \oldnoappendix%
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
