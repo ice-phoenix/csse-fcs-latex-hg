@@ -20,6 +20,7 @@
 \RequirePackage{nomencl}
 \RequirePackage{indentfirst}
 \RequirePackage{xstring}
+\RequirePackage{float}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
