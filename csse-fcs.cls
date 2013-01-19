@@ -11,7 +11,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{csse-fcs}[2012/09/18 CSSE FCS dissertation class]
+\ProvidesClass{csse-fcs}[2013/01/20 CSSE FCS dissertation class]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -448,6 +448,10 @@
   justification=raggedleft}
 \floatname{figure}{\CYRR\cyri\cyrs\cyru\cyrn\cyro\cyrk}
 \floatname{table}{\CYRT\cyra\cyrb\cyrl\cyri\cyrc\cyra}
+
+% Workaround for disser-1.2.0 `headcenter` pagestyle options
+\pagestyle{plain}
+\chapterpagestyle{plain}
 
 }
 }
