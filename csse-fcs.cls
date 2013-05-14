@@ -22,6 +22,8 @@
 \RequirePackage{xstring}
 \RequirePackage{float}
 
+\AtEndOfClass{\RequirePackage{caption}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \SetupKeyvalOptions{
