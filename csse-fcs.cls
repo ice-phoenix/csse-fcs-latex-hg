@@ -358,6 +358,12 @@
   \oldchapter%
 }
 
+\def\old@chapter[#1]#2{}
+\let\old@chapter=\@chapter
+\def\@chapter[#1]#2{
+  \old@chapter[\texorpdfstring{\noexpand\MakeTextUppercase{#1}}{#1}]{\MakeTextUppercase{#2}}
+}
+
 \def\oldbibcite{}
 \let\oldbibcite=\bibcite
 \def\bibcite{%
