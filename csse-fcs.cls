@@ -467,11 +467,10 @@
 \usepackage{fancyhdr}
 \setlength{\headheight}{15pt}
 
-\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
-\renewcommand{\sectionmark}[1]{ \markboth{#1}{} }
-
 \pagestyle{fancy}
 \chapterpagestyle{fancy}
+\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+\renewcommand{\sectionmark}[1]{ \markboth{#1}{} }
 
 \fancyhf{}
 \fancyfoot[LE,RO]{\thepage}
