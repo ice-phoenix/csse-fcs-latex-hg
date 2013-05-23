@@ -21,6 +21,7 @@
 \RequirePackage{indentfirst}
 \RequirePackage{xstring}
 \RequirePackage{float}
+\RequirePackage{fancyhdr}
 
 \AtEndOfClass{\RequirePackage{caption}}
 
@@ -461,8 +462,28 @@
 \floatname{table}{\CYRT\cyra\cyrb\cyrl\cyri\cyrc\cyra}
 
 % Workaround for disser-1.2.0 `headcenter` pagestyle options
-\pagestyle{plain}
-\chapterpagestyle{plain}
+% Custom page numbering style
+
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+
+\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+\renewcommand{\sectionmark}[1]{ \markboth{#1}{} }
+
+\pagestyle{fancy}
+\chapterpagestyle{fancy}
+
+\fancyhf{}
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[LE,RO]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
 
 }
 }
