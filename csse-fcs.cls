@@ -21,6 +21,9 @@
 \RequirePackage{indentfirst}
 \RequirePackage{xstring}
 \RequirePackage{float}
+\RequirePackage{fancyhdr}
+
+\AtEndOfClass{\RequirePackage{caption}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -356,6 +359,12 @@
   \oldchapter%
 }
 
+\def\old@chapter[#1]#2{}
+\let\old@chapter=\@chapter
+\def\@chapter[#1]#2{
+  \old@chapter[\texorpdfstring{\noexpand\MakeTextUppercase{#1}}{#1}]{\MakeTextUppercase{#2}}
+}
+
 \def\oldbibcite{}
 \let\oldbibcite=\bibcite
 \def\bibcite{%
@@ -387,7 +396,10 @@
 \clearpage
 
 \institution{{\cyr\CYRS\cyra\cyrn\cyrk\cyrt-\CYRP\cyre\cyrt\cyre\cyrr\cyrb\cyru\cyrr\cyrg\cyrs\cyrk\cyri\cyrishrt\ \cyrg\cyro\cyrs\cyru\cyrd\cyra\cyrr\cyrs\cyrt\cyrv\cyre\cyrn\cyrn\cyrery\cyrishrt\ \cyrp\cyro\cyrl\cyri\cyrt\cyre\cyrh\cyrn\cyri\cyrch\cyre\cyrs\cyrk\cyri\cyrishrt\ \cyru\cyrn\cyri\cyrv\cyre\cyrr\cyrs\cyri\cyrt\cyre\cyrt}}
-\faculty{{\cyr\CYRF\cyra\cyrk\cyru\cyrl\cyrsftsn\cyrt\cyre\cyrt\ \cyrt\cyre\cyrh\cyrn\cyri\cyrch\cyre\cyrs\cyrk\cyro\cyrishrt\ \cyrk\cyri\cyrb\cyre\cyrr\cyrn\cyre\cyrt\cyri\cyrk\cyri}}
+\faculty{{\cyr\CYRI\cyrn\cyrs\cyrt\cyri\cyrt\cyru\cyrt\ %
+  \cyri\cyrn\cyrf\cyro\cyrr\cyrm\cyra\cyrc\cyri\cyro\cyrn\cyrn\cyrery\cyrh\ %
+  \cyrt\cyre\cyrh\cyrn\cyro\cyrl\cyro\cyrg\cyri\cyrishrt\ \cyri\ %
+  \cyru\cyrp\cyrr\cyra\cyrv\cyrl\cyre\cyrn\cyri\cyrya}}
 \department{{\cyr\CYRK\cyra\cyrf\cyre\cyrd\cyrr\cyra\ \cyrk\cyro\cyrm\cyrp\cyrsftsn\cyryu\cyrt\cyre\cyrr\cyrn\cyrery\cyrh\ \cyrs\cyri\cyrs\cyrt\cyre\cyrm\ \cyri\ \cyrp\cyrr\cyro\cyrg\cyrr\cyra\cyrm\cyrn\cyrery\cyrh\ \cyrt\cyre\cyrh\cyrn\cyro\cyrl\cyro\cyrg\cyri\cyrishrt}}
 
 \city{{\cyr\CYRS\cyra\cyrn\cyrk\cyrt-\CYRP\cyre\cyrt\cyre\cyrr\cyrb\cyru\cyrr\cyrg}}
@@ -450,8 +462,27 @@
 \floatname{table}{\CYRT\cyra\cyrb\cyrl\cyri\cyrc\cyra}
 
 % Workaround for disser-1.2.0 `headcenter` pagestyle options
-\pagestyle{plain}
-\chapterpagestyle{plain}
+% Custom page numbering style
+
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+
+\pagestyle{fancy}
+\chapterpagestyle{fancy}
+\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+\renewcommand{\sectionmark}[1]{ \markboth{#1}{} }
+
+\fancyhf{}
+\fancyfoot[LE,RO]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[LE,RO]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
 
 % Workaround for new babel-russian conventions for alphabetic counters
 \newcommand{\@Asbuk}{\russian@Alph}
