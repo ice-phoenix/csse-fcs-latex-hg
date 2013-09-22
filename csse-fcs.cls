@@ -453,5 +453,9 @@
 \pagestyle{plain}
 \chapterpagestyle{plain}
 
+% Workaround for new babel-russian conventions for alphabetic counters
+\newcommand{\@Asbuk}{\russian@Alph}
+\newcommand{\@asbuk}{\russian@alph}
+
 }
 }
