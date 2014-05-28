@@ -1,9 +1,9 @@
-%% 
+%%
 %% Copyright (c) 2004-2010 Stanislav Kruchinin.
 %% All rights reserved.
-%% 
+%%
 %% Modified by Marat Akhin, 2012
-%% 
+%%
 
 \ProvidesFile{csse-master.rtx}
 
@@ -60,10 +60,10 @@
 \end{center}
 \vskip\fourthskip
 %
-\begin{center}
+\begin{flushleft}
   \courselabel\ \@coursenum\ --\ \@course\\%
   \masterproglabel\ \@masterprognum\ --\ \@masterprog%
-\end{center}
+\end{flushleft}
 %
 \vskip\fifthskip
 \begin{tabbing}

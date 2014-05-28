@@ -405,8 +405,8 @@
 \city{{\cyr\CYRS\cyra\cyrn\cyrk\cyrt-\CYRP\cyre\cyrt\cyre\cyrr\cyrb\cyru\cyrr\cyrg}}
 \date{\number\year}
 
-\renewcommand{\courselabel}{}
-\renewcommand{\masterproglabel}{}
+%\renewcommand{\courselabel}{}
+%\renewcommand{\masterproglabel}{}
 
 \addto\captionsrussian{%
   \renewcommand{\nomname}{\CYRS\CYRP\CYRI\CYRS\CYRO\CYRK\ \CYRO\CYRB\CYRO\CYRZ\CYRN\CYRA\CYRCH\CYRE\CYRN\CYRI\CYRISHRT\ \CYRI\ \CYRS\CYRO\CYRK\CYRR\CYRA\CYRSHCH\CYRE\CYRN\CYRI\CYRISHRT}
