@@ -54,6 +54,13 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newif\if@usedotsinheaders\@usedotsinheadersfalse
+\DeclareOption{dotsinheaders}{
+  \@usedotsinheaderstrue
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \newif\if@mastertitle\@mastertitletrue
 \DeclareOption{master}{
   \@mastertitletrue
@@ -442,6 +449,17 @@
 \renewcommand{\tocposttheappendix}{.~}
 \renewcommand{\pretheappendix}{\appendixname~}
 \renewcommand{\posttheappendix}{\\}
+
+\if@usedotsinheaders
+  \renewcommand{\tocpostthechapter}{.~}
+  \renewcommand{\postthechapter}{.~}
+  \renewcommand{\tocpostthesection}{.~}
+  \renewcommand{\postthesection}{.~}
+  \renewcommand{\tocpostthesubsection}{.~}
+  \renewcommand{\postthesubsection}{.~}
+  \renewcommand{\tocpostthesubsubsection}{.~}
+  \renewcommand{\postthesubsubsection}{.~}
+\fi
 
 \renewcommand\floatpagefraction{0.9}
 \renewcommand\topfraction{0.9}
