@@ -48,9 +48,9 @@
 \thispagestyle{empty}
 \enlargethispage{2cm}
 \begin{center}
-\instfont\@institution\par
-\instfont\@faculty\par
-\instfont\@department\par
+  \instfont\@institution\par
+  \instfont\@faculty\par
+  \instfont\@department\par
 \end{center}
 
 \vskip\firstskip
@@ -111,16 +111,19 @@
 \fi
 
 \def\studentlabelcover{\CYRS\cyrt\cyru\cyrd\cyre\cyrn\cyrt\ \groupname\ \@group}
-\def\drawlogo{\hfill\includegraphics[height=\picsize]{\@logo}}
 
 \ifundeflength\firstskip{4ex}
 \ifundeflength\secondskip{8ex}
-\ifundeflength\secondskipcover{0ex}
-\ifundeflength\picsize{8ex+4\baselineskip}
 \ifundeflength\thirdskip{2ex}
 \ifundeflength\fourthskip{0ex}
 \ifundeflength\fifthskip{16ex}
 \ifundeflength\sixthskip{1ex}
+
+\newlength{\picsize}
+\settoheight{\picsize}{ \vbox{\@approved} }
+\setlength{\picsize}{\picsize - 4ex}
+
+\def\drawlogo{\hfill\includegraphics[height=\picsize]{\@logo}}
 
 \def\titlefont{\Large\bfseries}
 \def\topiclabelfont{\large}
@@ -136,7 +139,7 @@
 
 \vskip\firstskip
 \ifx\@logo\empty\vspace*{\picsize}\else\drawlogo\fi
-\vskip\secondskipcover
+\vskip\secondskip
 \begin{center}
   {\titlefont\@title}
   \vskip\thirdskip
@@ -147,12 +150,14 @@
 %
 \begin{center}
   % Aligning student name as on the title page
-  \phantom{\courselabel\ \@coursenum\ --\ \@course}\ \\%
-  \phantom{\masterproglabel\ \@masterprognum\ --\ \@masterprog}%
+  \vphantom{\courselabel\ \@coursenum\ --\ \@course}\ \\%
+  \vphantom{\masterproglabel\ \@masterprognum\ --\ \@masterprog}%
 \end{center}
 %
 \vskip\fifthskip
-\hfill\studentlabelcover\ \@author\\[\sixthskip]
+\begin{flushright}
+  \studentlabelcover\ \@author
+\end{flushright}
 \vfill
 \begin{center}
   {\@city\cdsep\@date}
