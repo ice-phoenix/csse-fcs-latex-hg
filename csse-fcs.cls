@@ -58,6 +58,10 @@
 \DeclareOption{dotsinheaders}{
   \@usedotsinheaderstrue
 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newif\if@coverpage\@coverpagetrue
+\newif\if@coverpage@en\@coverpage@enfalse
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -505,6 +509,8 @@
 % Workaround for new babel-russian conventions for alphabetic counters
 \newcommand{\@Asbuk}{\russian@Alph}
 \newcommand{\@asbuk}{\russian@alph}
+
+\def\logo#1{\gdef\@logo{#1}}\logo{}
 
 }
 }
