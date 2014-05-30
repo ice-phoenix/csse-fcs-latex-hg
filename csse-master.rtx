@@ -10,6 +10,10 @@
 \newcommand\master@the{\default@the}
 \master@the
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Title page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \if@titlepage\renewcommand\maketitle[1][]{
 \ifthenelse{\equal{#1}{en}}{\@titlepage@entrue}{\@titlepage@enfalse}
 \if@titlepage@en
@@ -82,6 +86,10 @@
 \normalfont\clearpage
 }\fi
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Cover page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \if@coverpage\newcommand\makecover[1][]{
 \ifthenelse{\equal{#1}{en}}{\@coverpage@entrue}{\@coverpage@enfalse}
 \if@coverpage@en
@@ -101,8 +109,10 @@
   \def\studentlabel{\studentname\hspace{6cm}}
   \def\masterprogname{Master's Program}
 \fi
+
 \def\studentlabelcover{\CYRS\cyrt\cyru\cyrd\cyre\cyrn\cyrt\ \groupname\ \@group}
 \def\drawlogo{\hfill\includegraphics[height=\picsize]{\@logo}}
+
 \ifundeflength\firstskip{4ex}
 \ifundeflength\secondskip{8ex}
 \ifundeflength\secondskipcover{0ex}
@@ -119,14 +129,13 @@
 \thispagestyle{empty}
 \enlargethispage{2cm}
 \begin{center}
-\instfont\@institution\par
-\instfont\@faculty\par
-\instfont\@department\par
+  \instfont\@institution\par
+  \instfont\@faculty\par
+  \instfont\@department\par
 \end{center}
 
 \vskip\firstskip
 \ifx\@logo\empty\vspace*{\picsize}\else\drawlogo\fi
-%\vspace*{4\baselineskip}
 \vskip\secondskipcover
 \begin{center}
   {\titlefont\@title}
@@ -137,7 +146,7 @@
 \vskip\fourthskip
 %
 \begin{center}
-  % Aligning student's name to the same vertical position as on title page
+  % Aligning student name as on the title page
   \phantom{\courselabel\ \@coursenum\ --\ \@course}\ \\%
   \phantom{\masterproglabel\ \@masterprognum\ --\ \@masterprog}%
 \end{center}
@@ -149,8 +158,9 @@
   {\@city\cdsep\@date}
 \end{center}
 \normalfont\clearpage
-% Back side of the cover
-% Just an outed of numbering empty page
+%
+% Cover back side
+%
 \newpage
 \thispagestyle{empty}
 \mbox{}
